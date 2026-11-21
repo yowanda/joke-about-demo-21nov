@@ -13,7 +13,10 @@ JOKE = (
 def main() -> None:
     out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output")
     out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "entry.txt").write_text(JOKE, encoding="utf-8")
+    text = JOKE + "\n"
+    path = out_dir / "entry.txt"
+    path.write_text(text, encoding="utf-8")
+    print(f"wrote {path} ({len(text.encode('utf-8'))} bytes)")
 
 
 if __name__ == "__main__":
